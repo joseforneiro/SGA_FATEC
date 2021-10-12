@@ -50,6 +50,10 @@ public class EventoController {
 		ModelAndView mv = new ModelAndView("evento/detalhesEvento"); //index é a página que vai ser renderizada: detalhesEvento.html
 		mv.addObject("evento", evento); // O "evento" dentro das aspas é a palavra evento que está nessa parte do código do detalhesEvento.html (${evento}): <div th:each="evento : ${evento}">
 		System.out.println("evento" + evento);
+		
+		Iterable<Convidado> convidados = cr.findByEvento(evento);
+		mv.addObject("convidados", convidados);
+		
 		return mv;
 	}
 	
