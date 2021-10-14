@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
 
 @Entity // Anotando a classe pois essa classe vai ser uma tabela no nosso banco de dados.
 public class Evento implements Serializable { // Para o id funcionar certinho colocamos o implements Serializable
@@ -18,9 +19,16 @@ public class Evento implements Serializable { // Para o id funcionar certinho co
 	@GeneratedValue(strategy= GenerationType.AUTO) // Para gerar o id automaticamente
 	private long codigo;
 	
+	@NotEmpty // Quer dizer que o nome não vai ser vazio. Para utilizar teve que colocar uma dependência no pom.xml
 	private String nome;
+	
+	@NotEmpty // Quer dizer que o local não vai ser vazio. Para utilizar teve que colocar uma dependência no pom.xml
 	private String local;
+	
+	@NotEmpty // Quer dizer que o data não vai ser vazio. Para utilizar teve que colocar uma dependência no pom.xml
 	private String data;
+	
+	@NotEmpty // Quer dizer que o horario não vai ser vazio. Para utilizar teve que colocar uma dependência no pom.xml
 	private String horario;
 	
 	@OneToMany // A tabela evento para a tabela convidado é uma relação de 1 para n, ou seja 1 evento com muitos convidados (OneToMany)

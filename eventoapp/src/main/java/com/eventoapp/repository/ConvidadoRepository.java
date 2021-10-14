@@ -6,6 +6,6 @@ import com.eventoapp.models.Convidado;
 import com.eventoapp.models.Evento;
 
 public interface ConvidadoRepository extends CrudRepository<Convidado, String> {
-	Iterable<Convidado> findByEvento(Evento evento);
 
+	Iterable<Convidado> findByEvento(Evento evento); // Método para buscar a lista de convidados pelo Evento
 }
