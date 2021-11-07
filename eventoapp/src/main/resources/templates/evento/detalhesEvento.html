@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 	<title>EventosApp</title>
 	 
@@ -14,8 +13,8 @@
       
       <link rel="stylesheet" href="style/styleCss.css"/>
 </head>
-<body>
 
+<body>
 	<header>
 		 <nav>
 		    <div class="nav-wrapper">
@@ -25,11 +24,10 @@
 		      </ul>
 		    </div>
   		</nav>
-  		
 	</header>
 
 	<div th:each="evento : ${evento}" class="container detalhesEvento">
-	<h5>Detalhes do Evento</h5>
+		<h5>Detalhes do Evento</h5>
 		<div class="row">
 			<p>Nome: <span th:text="${evento.nome}"></span></p>
 			<p>Local: <span th:text="${evento.local}"></span></p>
@@ -38,29 +36,34 @@
 		</div>
 	</div>
 	
-		<th:block th:include="mensagemValidacao"></th:block>
-		<div class="container formConvidado">
+	<th:block th:include="mensagemValidacao"></th:block>
+	<div class="container formConvidado">
+		<h5>Adicionar novo convidado</h5>
 		<form method="post" th:object="${convidado}">
 			Nome: <input type="text" value="" name="nomeconvidado" placeholder="Nome Completo"/>
-			RG: <input type="text" value="" name="rg" placeholder="AA.00.000.000" class="validate"/>
+			RG: <input type="text" value="" name="rg" placeholder="AA-00.000.000" class="validate"/>
 			<button class="waves-effect waves-light btn" type="submit">Adicionar</button>
 		</form>
-		</div>
+	</div>
 	
-	<table class="container tabelaConvidado">
-		<thead>
-			<tr>
-				<th>Nome Convidado</th>
-				<th>RG</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="convidado : ${convidados}">
-				<td><span th:text="${convidado.nomeconvidado}"></span></td>
-				<td><span th:text="${convidado.rg}"></span></td>
-			</tr>
-		</tbody>
-	</table>
+	<form action="#" th:action="@{/editConvidados}" th:object="${convidadosWrapper}" method="post">
+		<h5 style="text-align: center">Lista de Convidados para este Evento</h5>
+		<table class="container tabelaConvidado">
+			<thead>
+				<tr>
+					<th>Nome Convidado</th>
+					<th>RG</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="convidado : ${convidadosWrapper.convidados}">
+					<td><input th:value="${convidado.nomeconvidado}" th:name="nomeconvidado" /></td>
+					<td><input th:value="${convidado.rg}" th:name="rg"/></td>
+				</tr>
+			</tbody>
+		</table>
+		<button type="submit">Salvar</button>
+	</form>
 		
 	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 
