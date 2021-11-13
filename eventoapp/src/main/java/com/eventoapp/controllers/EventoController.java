@@ -91,17 +91,23 @@ public class EventoController {
 	
 	@RequestMapping("/deletarEvento")
 	public String deletarEvento(long codigo){
-		Evento evento = er.findByCodigo(codigo);
-		er.delete(evento);
+		try {
+			Evento evento = er.findByCodigo(codigo);
+			er.delete(evento);
+		}
+		catch(Exception ex) {
+			
+		}
+			
 		return "redirect:/eventos";
+		
+		
+		
+		
 	}
 	
 	@RequestMapping(value="/{codigo}", method=RequestMethod.POST) // vai retornar o código de cada evento e mostrar os detalhes dele
 	public String detalhesEventoPost(@PathVariable("codigo") long codigo, @Valid Convidado convidado, BindingResult result, RedirectAttributes attributes) {
-		if(result.hasErrors()) {
-			attributes.addFlashAttribute("mensagem", "Verifique os campos!");
-			return "redirect:/{codigo}";
-		}
 		Evento evento = er.findByCodigo(codigo); // Faz a busca na tabela pelo código.
 		convidado.setEvento(evento);
 		cr.save(convidado);
