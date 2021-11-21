@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import com.eventoapp.models.Convidado;
 import com.eventoapp.models.ConvidadosWrapper;
 import com.eventoapp.models.Evento;
+import com.eventoapp.models.Notificacao;
 import com.eventoapp.repository.ConvidadoRepository;
 import com.eventoapp.repository.EventoRepository;
 
@@ -41,7 +42,7 @@ public class EventoController {
 			return "redirect:/cadastrarEvento";
 		}
 		er.save(evento);
-		attributes.addFlashAttribute("mensagem", "Evento Cadastrado com Sucesso!");
+		attributes.addFlashAttribute("mensagem", Notificacao.getInstance("Evento Cadastrado com Sucesso!"));
 		return "redirect:/cadastrarEvento";
 	}
 	
