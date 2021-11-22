@@ -30,7 +30,7 @@ Os padrões de projeto, também conhecidos pelo termo original em inglês design
 Quando utilizados de forma correta, os padrões de projeto colaboram para a obtenção de um design flexível, mais coeso e menos acoplado.
 
 ## FERRAMENTAS UTILIZADAS: :wrench:
- - [GitHub (clique aqui)](https://trello.com/b/EW0XA8qH/finger-one)
+ - [GitHub (clique aqui)](https://github.com/)
  - [StackEdit (clique aqui)]( https://stackedit.io/)
  - [MySQL (clique aqui)](https://www.mysql.com/)
  - [Java(clique aqui)](https://www.oracle.com/br/java/technologies/javase/javase-jdk8-downloads.html)
